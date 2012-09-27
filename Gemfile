@@ -6,6 +6,9 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'haml'
+
+gem "nifty-generators", :group => :development
 
 
 # Gems used only for assets and not required
@@ -36,3 +39,5 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "mocha", :group => :test

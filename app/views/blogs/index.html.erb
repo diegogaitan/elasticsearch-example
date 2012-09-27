@@ -1,0 +1,17 @@
+<% title "Blogs" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  <% for blog in @blogs %>
+    <tr>
+      <td><%= blog.name %></td>
+      <td><%= blog.description %></td>
+      <td><%= link_to "Edit", edit_blog_path(blog) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Blog", new_blog_path %></p>
