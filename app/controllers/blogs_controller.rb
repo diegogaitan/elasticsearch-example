@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   def index
-    @blogs = Blog.all
+    @blogs = Blog.search(params)
   end
 
   def new
@@ -14,6 +14,10 @@ class BlogsController < ApplicationController
     else
       render :action => 'new'
     end
+  end
+
+  def show
+    @blog = Blog.find(params[:id])
   end
 
   def edit

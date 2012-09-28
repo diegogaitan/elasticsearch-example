@@ -1,17 +1,25 @@
-<% title "Blogs" %>
+<h1>Blogs</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
-  <% for blog in @blogs %>
-    <tr>
-      <td><%= blog.name %></td>
-      <td><%= blog.description %></td>
-      <td><%= link_to "Edit", edit_blog_path(blog) %></td>
-    </tr>
-  <% end %>
-</table>
+<%= form_tag blogs_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
 
-<p><%= link_to "New Blog", new_blog_path %></p>
+<div id="blogs">
+<% @blogs.each do |blog| %>
+  <h2>
+    <%= link_to blog.name, blog %>
+  </h2>
+  <div class="info">
+    Created at <%= blog.created_at.to_time.strftime('%b %d, %Y') %>
+  </div>
+  <div class="info">
+    Tags <%= blog.tag_list.to_s %>
+  </div>
+  <div class="content"><%= blog.description %></div>
+<% end %>
+</div>
+
+<%= will_paginate @blogs %>

@@ -7,9 +7,13 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 gem 'haml'
+gem 'acts-as-taggable-on', '~> 2.3.1'
+gem 'will_paginate'
+gem 'tire'
 
-gem "nifty-generators", :group => :development
-
+group :development do
+  gem "nifty-generators"
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -39,5 +43,3 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
-
-gem "mocha", :group => :test
