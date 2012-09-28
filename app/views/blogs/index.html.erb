@@ -7,6 +7,22 @@
   </p>
 <% end %>
 
+<div id="facets">
+  <h3>Tags</h3>
+  <ul>
+    <% @blogs.facets['tags']['terms'].each do |facet| %>
+      <li>
+        <%= link_to_unless_current facet['term'], params.merge(the_tag: facet['term']) %>
+        <% if params[:the_tag] == facet['term'].to_s %>
+          (<%= link_to "remove", the_tag: nil %>)
+        <% else %>
+          (<%= facet['count'] %>)
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
 <div id="blogs">
 <% @blogs.each do |blog| %>
   <h2>
